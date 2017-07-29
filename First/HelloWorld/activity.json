@@ -1,0 +1,23 @@
+{
+  "name": "HelloWorld",
+  "version": "0.0.1",
+  "type": "flogo:activity",
+  "description": "Akash says HelloWorld",
+  "author": "Akash Mahapatra",
+  "inputs":[
+    {
+      "name": "salutation",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "string"
+    }
+  ]
+}
