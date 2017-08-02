@@ -24,9 +24,10 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 	return a.metadata
 }
 
-// THIS HAS CHANGED
 // Eval implements activity.Activity.Eval
-func (a *MyActivity) Eval(context activity.Context) (done bool, evalError error) {
+func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
+
+	// do eval
 	// Get the activity data from the context
 	name := context.GetInput("name").(string)
 	salutation := context.GetInput("salutation").(string)
@@ -38,5 +39,6 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, evalError error)
 	context.SetOutput("result", "The Flogo engine says "+salutation+" to "+name)
 
 	// Signal to the Flogo engine that the activity is completed
+
 	return true, nil
 }
