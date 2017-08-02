@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
-//	"github.com/TIBCOSoftware/flogo-lib/flow/test"
+	"github.com/TIBCOSoftware/flogo-contrib/action/flow/test"
 )
 
 var activityMetadata *activity.Metadata
@@ -35,6 +35,7 @@ func TestCreate(t *testing.T) {
 	}
 }
 
+
 func TestEval(t *testing.T) {
 
 	defer func() {
@@ -44,14 +45,14 @@ func TestEval(t *testing.T) {
 		}
 	}()
 
-	// by me    act := NewActivity(getActivityMetadata())
+	act := NewActivity(getActivityMetadata())
 	
 
-	//by me    tc := test.NewTestActivityContext(getActivityMetadata())
+	tc := test.NewTestActivityContext(getActivityMetadata())
 
 	//setup attrs
 
-	//by me    act.Eval(tc)
+	act.Eval(tc)
 
 	//check result attr
 }
