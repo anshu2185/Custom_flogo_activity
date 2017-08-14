@@ -2,7 +2,7 @@
   "name": "HelloWorld",
   "version": "0.0.1",
   "type": "flogo:activity",
-  "description": "Akash says HelloWorld",
+  "description": "activity description",
   "author": "Akash Mahapatra",
   "inputs":[
     {

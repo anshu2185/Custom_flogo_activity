@@ -5,7 +5,6 @@ import (
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
 
-// THIS IS ADDED
 // log is the default package logger which we'll use to log
 var log = logger.GetLogger("activity-helloworld")
 
@@ -25,9 +24,7 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 }
 
 // Eval implements activity.Activity.Eval
-func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
-
-	// do eval
+func (a *MyActivity) Eval(context activity.Context) (done bool, evalError error) {
 	// Get the activity data from the context
 	name := context.GetInput("name").(string)
 	salutation := context.GetInput("salutation").(string)
@@ -39,6 +36,5 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	context.SetOutput("result", "The Flogo engine says "+salutation+" to "+name)
 
 	// Signal to the Flogo engine that the activity is completed
-
 	return true, nil
 }
