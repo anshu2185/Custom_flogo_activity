@@ -11,7 +11,7 @@ import (
 var activityLog = logger.GetLogger("activity-dir-poller")
 
 const (
-	ivDirectoryName   = "dir_name"
+	ivDirectoryName   = "directory_name"
 
 	ovMessage = "message"
 )
@@ -49,6 +49,8 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error)  {
 		} else {
 			// other error
 		}
+	} else {
+		fmt.Println("Found the file to be polled")
 	}
 
 	return true, nil

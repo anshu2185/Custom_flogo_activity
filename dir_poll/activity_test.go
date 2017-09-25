@@ -48,6 +48,7 @@ func TestEval(t *testing.T) {
 	tc := test.NewTestActivityContext(getActivityMetadata())
 
 	//setup attrs
+	tc.SetInput("directory_name", "/home/akash/test")
 
 	act.Eval(tc)
 
