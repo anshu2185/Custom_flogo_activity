@@ -9,6 +9,11 @@
     {
       "name": "directory_name",
       "type": "string"
+    },
+    {
+      "name": "addToFlow",
+      "type": "boolean",
+      "value": "true"
     }
   ],
   "outputs": [
