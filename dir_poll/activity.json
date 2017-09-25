@@ -1,0 +1,20 @@
+{
+  "name": "dir_poll",
+  "title": "Directory Poller",
+  "version": "0.0.1",
+  "type": "flogo:activity",
+  "description": "Polls a directory",
+  "author": "Akash Mahapatra <amahapat@tibco.com>",
+  "inputs":[
+    {
+      "name": "directory_name",
+      "type": "string"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "message",
+      "type": "string"
+    }
+  ]
+}
