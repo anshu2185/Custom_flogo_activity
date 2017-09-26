@@ -1,4 +1,4 @@
-package directory_poller
+package dir_poll
 
 import (
 	"github.com/TIBCOSoftware/flogo-lib/core/action"
