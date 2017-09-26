@@ -1,4 +1,4 @@
-package directory_poller
+package dir_poll
 
 import (
 	"context"
