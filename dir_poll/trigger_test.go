@@ -27,9 +27,11 @@ func (tr *TestRunner) Run(context context.Context, action action.Action, uri str
 }
 
 const testConfig string = `{
+	"name": "directory_poller",
   "id": "mytrigger",
   "settings": {
-    "setting": "somevalue"
+		"setting": "somevalue",
+		"dirName": ""
   },
   "handlers": [
     {
