@@ -1,12 +1,12 @@
 {
-  "name": "poller",
+  "name": "Directory Poller",
   "type": "flogo:trigger",
   "ref": "github.com/Ganitagya/flogo-contrib/trigger/mqtt",
   "version": "0.0.1",
-  "title": "File Poller",
+  "title": "Directory Poller",
   "author": "Akash Mahapatra",
-  "description": "Poll",
-  "homepage": "https://github.com/Ganitagya/flogo-contrib/tree/master/trigger/mqtt",
+  "description": "Simple Directory Poller",
+  "homepage": "https://github.com/Ganitagya/Custom_flogo_activity/edit/master/dir_poll",
 "settings":[
     {
       "name": "dirName",
