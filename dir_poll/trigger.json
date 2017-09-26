@@ -1,6 +1,6 @@
 {
-  "name": "directory_poller",
-  "title": "Directory Poller",
+  "name": "directory_poller1",
+  "title": "Directory Poller1",
   "version": "0.0.1",
   "type": "flogo:trigger",
   "description": "Polls a directory",
