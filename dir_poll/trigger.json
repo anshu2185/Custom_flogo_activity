@@ -1,10 +1,11 @@
 {
-  "name": "directory_poller1",
-  "title": "Directory Poller1",
-  "version": "0.0.1",
+  "name": "directory-poller",
   "type": "flogo:trigger",
-  "description": "Polls a directory",
-  "author": "Akash Mahapatra <amahapat@tibco.com>",
+  "ref": "github.com/TIBCOSoftware/flogo-contrib/trigger/timer",
+  "version": "0.0.1",
+  "title": "Directory Poller",
+  "description": "Simple dirctory poller ",
+  "homepage": "https://github.com/TIBCOSoftware/flogo-contrib/tree/master/trigger/timer",
   "settings":[
     {
       "name": "dirName",
