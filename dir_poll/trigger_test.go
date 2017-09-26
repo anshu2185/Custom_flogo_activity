@@ -10,6 +10,8 @@ import (
 	"github.com/TIBCOSoftware/flogo-lib/core/trigger"
 )
 
+var jsonMetadata = getJsonMetadata() 
+
 func getJsonMetadata() string{
 	jsonMetadataBytes, err := ioutil.ReadFile("trigger.json")
 	if err != nil{
@@ -30,14 +32,12 @@ const testConfig string = `{
 	"name": "directory_poller",
   "id": "mytrigger",
   "settings": {
-		"setting": "somevalue",
 		"dirName": ""
   },
   "handlers": [
     {
       "actionId": "test_action",
       "settings": {
-        "handler_setting": "somevalue"
       }
     }
   ]
