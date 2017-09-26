@@ -1,6 +1,8 @@
 package dir_poll
 
+
 import (
+	
 	"context"
 	"io/ioutil"
 	"encoding/json"
@@ -10,7 +12,7 @@ import (
 	"github.com/TIBCOSoftware/flogo-lib/core/trigger"
 )
 
-var jsonMetadata = getJsonMetadata() 
+var jsonMetadata = getJsonMetadata()
 
 func getJsonMetadata() string{
 	jsonMetadataBytes, err := ioutil.ReadFile("trigger.json")
@@ -20,13 +22,6 @@ func getJsonMetadata() string{
 	return string(jsonMetadataBytes)
 }
 
-type TestRunner struct {
-}
-
-// Run implements action.Runner.Run
-func (tr *TestRunner) Run(context context.Context, action action.Action, uri string, options interface{}) (code int, data interface{}, err error) {
-	return 0, nil, nil
-}
 
 const testConfig string = `{
 	"name": "directory_poller",
@@ -43,10 +38,20 @@ const testConfig string = `{
   ]
 }`
 
+type TestRunner struct {
+}
+
+// Run implements action.Runner.Run
+func (tr *TestRunner) Run(context context.Context, action action.Action, uri string, options interface{}) (code int, data interface{}, err error) {
+	log.Debugf("Ran Action: %v", uri)
+	return 0, nil, nil
+}
+
+
 func TestInit(t *testing.T) {
 
-	// New factory
-	md := trigger.NewMetadata(getJsonMetadata())
+	// New  factory
+	md := trigger.NewMetadata(jsonMetadata)
 	f := NewFactory(md)
 
 	// New Trigger
@@ -54,7 +59,10 @@ func TestInit(t *testing.T) {
 	json.Unmarshal([]byte(testConfig), config)
 	tgr := f.New(&config)
 
+
 	runner := &TestRunner{}
 
 	tgr.Init(runner)
 }
+
+

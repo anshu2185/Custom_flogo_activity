@@ -1,12 +1,13 @@
 {
-  "name": "directory-poller",
+  "name": "poller",
   "type": "flogo:trigger",
-  "ref": "github.com/TIBCOSoftware/flogo-contrib/trigger/timer",
+  "ref": "github.com/Ganitagya/flogo-contrib/trigger/mqtt",
   "version": "0.0.1",
-  "title": "Directory Poller",
-  "description": "Simple dirctory poller ",
-  "homepage": "https://github.com/TIBCOSoftware/flogo-contrib/tree/master/trigger/timer",
-  "settings":[
+  "title": "File Poller",
+  "author": "Akash Mahapatra",
+  "description": "Poll",
+  "homepage": "https://github.com/Ganitagya/flogo-contrib/tree/master/trigger/mqtt",
+"settings":[
     {
       "name": "dirName",
       "type": "string",
@@ -28,3 +29,4 @@
     ]
   }
 }
+
