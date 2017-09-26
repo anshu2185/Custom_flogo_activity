@@ -1,0 +1,29 @@
+{
+  "name": "directory_poller",
+  "title": "Directory Poller",
+  "version": "0.0.1",
+  "type": "flogo:trigger",
+  "description": "Polls a directory",
+  "author": "Akash Mahapatra <amahapat@tibco.com>",
+  "settings":[
+    {
+      "name": "dirName",
+      "type": "string",
+      "value": "default"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "filename",
+      "type": "string"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "dirName",
+        "type": "string"
+      }
+    ]
+  }
+}
