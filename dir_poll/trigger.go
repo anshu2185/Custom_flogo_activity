@@ -9,6 +9,9 @@ import (
 	"io/ioutil"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 	"fmt"
+	"bytes"
+	//"os"
+	"context"
 )
 
 // log is the default package logger
@@ -60,7 +63,9 @@ func (t *MqttTrigger) Start() error {
 	w.SetMaxEvents(1)
 	
 	//  notify write, create, remove, rename events.
-	w.FilterOps(watcher.Write, watcher.Create, watcher.Move, watcher.Remove, watcher.Rename)
+	//w.FilterOps(watcher.Write, watcher.Create, watcher.Move, watcher.Remove, watcher.Rename)
+	w.FilterOps(watcher.Write)
+
 	
 	initialTime := time.Time( time.Now() )	
 	
@@ -75,12 +80,38 @@ func (t *MqttTrigger) Start() error {
 				if event.Path != "-" {
 					for _, f := range w.WatchedFiles() {
 						//fmt.Printf("%s: %s \n", path, f.Name())
-						showfiles(event.Path, initialTime, f.Name(), f.ModTime())
-					}
-				}
+						filename := showfiles(event.Path, initialTime, f.Name(), f.ModTime())
 
-				initialTime = time.Now()
+
+						data := make(map[string]interface{})
+						data["filename"] = filename
+						//if(t.metadata.Metadata.OutPuts
+						startAttrs, errorAttrs := t.metadata.OutputsToAttrs(data, true)
 			
+						if errorAttrs != nil || startAttrs == nil {
+							panic("Failed to create output attributes")
+						}
+						//////////////////////////////////////////////////////////////////
+						
+						for _, handler := range t.config.Handlers {
+							//actionID := action.Get(handler.ActionId)
+							//action := action.Get(actionID)
+							action := action.Get(handler.ActionId)
+							context := trigger.NewContext(context.Background(), startAttrs)
+						
+							//_, _, err := t.runner.Run(context, action, actionID, nil)
+							_, _, err := t.runner.Run(context, action, handler.ActionId, nil)
+
+							if err != nil {
+								panic("Run action for ActionID failed : message lost")
+							}
+						}
+						
+						/////////////////////////////////////////////////////////////////////
+					}
+				}				
+				initialTime = time.Now()
+				
 			case err := <-w.Error:
 				panic(err)
 			case <-w.Closed:
@@ -94,7 +125,8 @@ func (t *MqttTrigger) Start() error {
 	handlers := t.config.Handlers
 	for _, handler := range handlers {
 				dirName := handler.Settings["dirName"].(string)
-				if err := w.AddRecursive(dirName); err != nil {
+				//if err := w.AddRecursive(dirName); err != nil {
+				if err := w.Add(dirName); err != nil {
 					panic(err)
 				}
 			
@@ -126,8 +158,10 @@ func (t *MqttTrigger) Start() error {
 	
 	//If a file is modified after initial time then fileLAstmodified > initial time 
 //Hence fileLastmodified - initial time > 0
-func showfiles(dirPath string, initialTime time.Time, filename string, fileLastModified time.Time) {
+func showfiles(dirPath string, initialTime time.Time, filename string, fileLastModified time.Time) (string) {
 	
+	var str bytes.Buffer
+
 	files, err := ioutil.ReadDir(dirPath)
     if err != nil {
         panic(err)
@@ -136,10 +170,16 @@ func showfiles(dirPath string, initialTime time.Time, filename string, fileLastM
     for _, f := range files {
 		if f.Name() == filename && ( fileLastModified.Sub(initialTime) > 0 ) {
 			fmt.Println(f.Name())
+		   
+			str.WriteString(dirPath)
+			str.WriteString("/")
+			str.WriteString(f.Name())
+		   
+			fmt.Println(str.String())		   
 		}             
 	}
+	return str.String()
 }
-
 
 // Stop implements ext.Trigger.Stop
 func (t *MqttTrigger) Stop() error {

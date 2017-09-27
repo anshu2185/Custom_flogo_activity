@@ -65,4 +65,3 @@ func TestInit(t *testing.T) {
 	tgr.Init(runner)
 }
 
-
