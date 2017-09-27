@@ -1,5 +1,5 @@
-package dir_poll
-
+//package dir_poll
+package main
 
 import (
 	

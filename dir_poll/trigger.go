@@ -1,12 +1,12 @@
-package dir_poll
-
+//package dir_poll
+package main
 
 import (
 	"github.com/TIBCOSoftware/flogo-lib/core/action"
 	"github.com/TIBCOSoftware/flogo-lib/core/trigger"
 	"time"
 	"github.com/radovskyb/watcher"
-	"io/ioutil"
+	//"io/ioutil"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 	"fmt"
 	"bytes"
@@ -55,6 +55,8 @@ func (t *MqttTrigger) Start() error {
 
 	
 	w := watcher.New()
+
+	var str bytes.Buffer
 	
 	// SetMaxEvents to 1 to allow at most 1 event's to be received
 	// on the Event channel per watching cycle.
@@ -66,7 +68,7 @@ func (t *MqttTrigger) Start() error {
 	//w.FilterOps(watcher.Write, watcher.Create, watcher.Move, watcher.Remove, watcher.Rename)
 	w.FilterOps(watcher.Write)
 
-	
+
 	initialTime := time.Time( time.Now() )	
 	
 	go func() {
@@ -80,8 +82,15 @@ func (t *MqttTrigger) Start() error {
 				if event.Path != "-" {
 					for _, f := range w.WatchedFiles() {
 						//fmt.Printf("%s: %s \n", path, f.Name())
-						filename := showfiles(event.Path, initialTime, f.Name(), f.ModTime())
-
+						//filename := showfiles(event.Path, initialTime, f.Name(), f.ModTime())
+				
+						str.WriteString(event.Path)
+						str.WriteString("/")
+						str.WriteString(f.Name())
+		   
+						filename := str.String()
+						//fmt.Println(str.String())
+						fmt.Println("Modified Filename : %s", filename)
 
 						data := make(map[string]interface{})
 						data["filename"] = filename
@@ -155,6 +164,8 @@ func (t *MqttTrigger) Start() error {
 	
 	return nil
 }
+
+/*
 	
 	//If a file is modified after initial time then fileLAstmodified > initial time 
 //Hence fileLastmodified - initial time > 0
@@ -180,6 +191,7 @@ func showfiles(dirPath string, initialTime time.Time, filename string, fileLastM
 	}
 	return str.String()
 }
+*/
 
 // Stop implements ext.Trigger.Stop
 func (t *MqttTrigger) Stop() error {
