@@ -76,8 +76,8 @@ func (t *MqttTrigger) Start() error {
 			select {
 			case event := <-w.Event:
 				fmt.Println(event) // Print the event's info.
-				//fmt.Println("The below file was changed:")
-				fmt.Println(event.Path)
+				fmt.Println("The below file was changed:----------------")
+				//fmt.Println(event.Path)
 
 				if event.Path != "-" {
 					for _, f := range w.WatchedFiles() {
