@@ -66,8 +66,8 @@ func (t *MqttTrigger) Start() error {
 	
 	//  notify write, create, remove, rename events.
 	//w.FilterOps(watcher.Write, watcher.Create, watcher.Move, watcher.Remove, watcher.Rename)
-	w.FilterOps(watcher.Write)
-
+	w.FilterOps(watcher.Write, watcher.Create, watcher.Move, watcher.Remove, watcher.Rename)
+	
 
 	initialTime := time.Time( time.Now() )	
 	
