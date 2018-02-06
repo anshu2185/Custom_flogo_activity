@@ -19,11 +19,6 @@
       "required": true
     },
     {
-      "name": "Autorization",
-      "type": "string",
-      "required": true
-    }
-    {
       "name": "pathParams",
       "type": "params"
     },
