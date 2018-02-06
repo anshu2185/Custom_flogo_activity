@@ -5,7 +5,7 @@ This activity provides your flogo application the ability to invoke a REST servi
 ## Installation
 
 ```bash
-flogo add activity github.com/Ganitagya/flogo-contrib/activity/rest
+flogo add activity github.com/Ganitagya/Custom_flogo_activity/activities/rest
 ```
 
 ## Schema
