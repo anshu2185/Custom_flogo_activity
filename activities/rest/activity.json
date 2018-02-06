@@ -1,11 +1,11 @@
 {
-  "name": "tibco-rest-Akash",
+  "name": "Post Rest Activity",
   "type": "flogo:activity",
-  "ref": "github.com/Ganitagya/flogo-contrib/activity/rest",
+  "ref": "github.com/Ganitagya/Custom_flogo_activity/activities/rest",
   "version": "0.0.1",
-  "title": "Invoke REST Service Akash",
+  "title": "Invoke REST Service with Auth",
   "description": "Simple REST Activity with Basic Auth",
-  "homepage": "https://github.com/Ganitagya/flogo-contrib/edit/master/activity/rest",
+  "homepage": "https://github.com/Ganitagya/Custom_flogo_activity/edit/master/activities/rest",
   "inputs":[
     {
       "name": "method",
