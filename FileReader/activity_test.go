@@ -1,4 +1,4 @@
-package MQTT_Pub
+package FileReader 
 
 import (
 	"fmt"

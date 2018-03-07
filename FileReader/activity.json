@@ -1,7 +1,7 @@
 {
   "name": "File Reader",
   "type": "flogo:activity",
-  "ref": "github.com/Ganitagya/flogo-contrib/activity/MQTT_Pub",
+  "ref": "github.com/Ganitagya/Custom_flogo_activity/FileReader",
   "version": "0.0.1",
   "title": "File Reader",
   "description": "Reads lines from Files",
