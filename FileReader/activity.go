@@ -4,6 +4,10 @@ package FileReader
 import (
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
+
+	"bufio"
+	"fmt"
+	"os"
 )
 
 // log is the default package logger
@@ -33,7 +37,13 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	// do eval
 
-	
+	fileHandle, _ := os.Open("file_name")
+	defer fileHandle.Close()
+	fileScanner := bufio.NewScanner(fileHandle)
+
+	for fileScanner.Scan() {
+		fmt.Println(fileScanner.Text())
+	}
 
 	return true, nil
 }
