@@ -1,0 +1,21 @@
+{
+  "name": "File Reader",
+  "type": "flogo:activity",
+  "ref": "github.com/Ganitagya/flogo-contrib/activity/MQTT_Pub",
+  "version": "0.0.1",
+  "title": "File Reader",
+  "description": "Reads lines from Files",
+  "author": "Akash Mahapatra <amahapat@tibco.com>",
+  "input":[
+   {
+      "name": "filename",
+      "type": "string"
+    }
+  ],
+  "output": [
+    {
+      "name": "result",
+      "type": "string"
+    }
+  ]
+}
