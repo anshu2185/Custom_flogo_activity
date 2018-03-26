@@ -58,13 +58,13 @@ Configure a task in flow to perform Fast Fourier Transform
       "ref": "github.com/Ganitagya/Custom_flogo_activity/dirpoll",
       "description": "Simple Directory Poller",
       "settings": {
-        "dirName": "/Users/Ganitagya/Downloads/Hitachi/files"
+        "dirName": "/Users/Ganitagya/Downloads/files"
       },
       "id": "directory_poller",
       "handlers": [
         {
           "settings": {
-            "dirName": "/Users/Ganitagya/Downloads/Hitachi/files"
+            "dirName": "/Users/Ganitagya/Downloads/files"
           },
         }
       ]
