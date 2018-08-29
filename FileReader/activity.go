@@ -6,7 +6,6 @@ import (
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 
 	"bufio"
-	//"fmt"
 	"os"
 )
 
@@ -44,7 +43,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
  	var out string
 	for fileScanner.Scan() {
 		out = fileScanner.Text()
-		//fmt.Println(fileScanner.Text())
+		
 	}
 	context.SetOutput(result, out)
 	return true, nil
