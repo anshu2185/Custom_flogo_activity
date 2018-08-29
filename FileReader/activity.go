@@ -37,7 +37,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	// do eval
 
-	fileHandle, _ := os.Open("file_name")
+	fileHandle, _ := os.Open(filename)
 	defer fileHandle.Close()
 	fileScanner := bufio.NewScanner(fileHandle)
 
