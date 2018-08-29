@@ -15,6 +15,7 @@ var log = logger.GetLogger("activity-akash file reader")
 
 const (
 	filename   = "filename"
+	result    =  "result"
 )
 
 // MyActivity is a stub for your Activity implementation
@@ -40,11 +41,12 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	fileHandle, _ := os.Open(filename)
 	defer fileHandle.Close()
 	fileScanner := bufio.NewScanner(fileHandle)
-
+ 	var out string
 	for fileScanner.Scan() {
-		fmt.Println(fileScanner.Text())
+		out = fileScanner.Text()
+		//fmt.Println(fileScanner.Text())
 	}
-
+	context.SetOutput(out, result)
 	return true, nil
 }
 
