@@ -46,7 +46,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		out = fileScanner.Text()
 		//fmt.Println(fileScanner.Text())
 	}
-	context.SetOutput(out, result)
+	context.SetOutput(result, out)
 	return true, nil
 }
 
